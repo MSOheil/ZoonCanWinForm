@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RootNamespace>_20Vision_MailRoom_Wpf</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\back-new.jfif" />
+    <None Remove="Images\download.jfif" />
+    <None Remove="Images\Grand Entrance.jfif" />
+    <None Remove="Images\key-icon.png" />
+    <None Remove="Images\p1.jpg" />
+    <None Remove="Images\user-icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\back-new.jfif" />
+    <Resource Include="Images\download.jfif" />
+    <Resource Include="Images\Grand Entrance.jfif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\key-icon.png" />
+    <Resource Include="Images\p1.jpg" />
+    <Resource Include="Images\user-icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Fonts\" />
+    <Folder Include="MVVM\Model\NewFolder\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\20Vision_MailRoom_Wpf_Application\20Vision_MailRoom_Wpf_Application.csproj" />
+  </ItemGroup>
+
+</Project>

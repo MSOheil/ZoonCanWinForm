@@ -1,0 +1,265 @@
+﻿<Window x:Class="_20Vision_MailRoom_Wpf.MVVM.View.ZoonCan.ZoonCanView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:_20Vision_MailRoom_Wpf.MVVM.ViewModel.ZoonCan"
+        Height="720" Width="1080" WindowStartupLocation="CenterScreen"
+        WindowStyle="None" AllowsTransparency="True" Loaded="Window_Loaded"
+        Background="Transparent">
+    <Window.DataContext>
+        <viewModel:ZoonCanViewModel/>
+    </Window.DataContext>
+    <Border  CornerRadius="30">
+        <Border.Background>
+            <ImageBrush ImageSource="/Images/Grand Entrance.jfif"
+                        Stretch="Uniform"/>
+        </Border.Background>
+        <Border  CornerRadius="30"
+            MouseDown="Border_MouseDown"
+             Opacity="0.92"
+             MouseLeftButtonDown="Border_MouseLeftButtonDown">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#bdc3c7" Offset="0"/>
+                    <GradientStop Color="#bdc3c7" Offset="0.75"/>
+                    <GradientStop Color="#2c3e50" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop  Color="#bdc3c7"/>
+                    <GradientStop Color="#2c3e50"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition  Width="25"/>
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="5"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="مدیریت زونکن ها" 
+                           Foreground="DarkGray"
+                           FontSize="16"
+                           FontFamily="Montserrat"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Margin="10,0,0,0"/>
+                        <Button x:Name="btnMinimize"
+                        Background="#28AEEd"
+                        BorderThickness="0"
+                        Content="-"
+                        Foreground="White"
+                        FontSize="16"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Grid.Column="1"
+                        Click="btnMinimize_Click">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#28AEED"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#278BEF"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="18" Height="18"
+                                    CornerRadius="9"
+                                    Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button x:Name="btnClose"
+                        BorderThickness="0"
+                        Content="X"
+                        Foreground="White"
+                        FontSize="12"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Grid.Column="2"
+                        Click="btnClose_Click">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#DA34AE"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#DA34AE"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="18" Height="18"
+                                    CornerRadius="9"
+                                    Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="0">
+                        <StackPanel Orientation="Horizontal">
+                            <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="20 -30 0 0">
+                                <Ellipse>
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="/Images/p1.jpg"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </Border>
+                            <TextBlock Text="Mohamand Soehil Davoodi"
+                               Foreground="White"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Margin="30 0 0 0"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <StackPanel Orientation="Horizontal">
+
+                            <Button Style="{StaticResource addButton}"
+                                Margin="30 100 0  0" Click="AddZoonCan_Click" Visibility="Hidden"  x:Name="AddBtn">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
+                                    <TextBlock Text="افزودن زونکن"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource addButton}" Click="EditZoonCan_Click" x:Name="EditBtn" Visibility="Hidden"
+                                Margin="30 100 0  0">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="BookEdit" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
+                                    <TextBlock Text="ویرایش زونکن"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{StaticResource addButton}" Click="DeleteZoonCan_Click" x:Name="DeleteBtn" Visibility="Hidden"
+                                Margin="30 100 0  0">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="Delete" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
+                                    <TextBlock Text="حذف زونکن"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="2" Grid.Column="0" Background="#6741D9">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border>
+                        <Border.BorderBrush>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#bdc3c7" Offset="0"/>
+                                <GradientStop Color="#bdc3c7" Offset="0.75"/>
+                                <GradientStop Color="#2c3e50" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                                <GradientStop  Color="#bdc3c7"/>
+                                <GradientStop Color="#2c3e50"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <StackPanel Grid.Column="0">
+
+                            <Button Margin="0 30 0 20" Background="#2c3e50" Click="ShowFolder_Click" BorderBrush="Transparent">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text=" فولدر ها"
+                                        FontSize="17" Foreground="White"/>
+                                </StackPanel>
+                            </Button>
+                            <Separator Height="1" Grid.Row="3" Background="#DAE2EA" Margin="0 -1 0 10"/>
+
+                        </StackPanel>
+                    </Border>
+                    <DataGrid Grid.Row="1" Grid.Column="1" 
+                                  x:Name="ZDG_View" IsReadOnly="True"
+                                  ItemsSource="{Binding ZoonCanViewModel}"
+                              AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                Visibility="Hidden"
+                                Header="ID"
+                                CanUserResize="False"
+                                Width="*" 
+                                Binding="{Binding ZoonCanId}"/>
+                            <DataGridTextColumn
+                                Header="کد زونکن"
+                                MinWidth="60"
+                                CanUserResize="False"
+                                Width="60" 
+                                Binding="{Binding ZoonCanGeneratedCode}"/>
+                            <DataGridTextColumn
+                                Header="نام زونکن"
+                                CanUserResize="False"
+                                MinWidth="130"
+                                Width="130" 
+                                  Binding="{Binding ZoonCanName}" />
+                            <DataGridTextColumn
+                                    CanUserResize="False"
+                                Header="تاریخ درج"
+                                MinWidth="75"
+                                Width="75" 
+                                  Binding="{Binding ZoonCanInsertDate}" />
+                            <DataGridTemplateColumn Header="رنگ زونکن" IsReadOnly="True" Width="40">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Border Width="25" Height="25" CornerRadius="50" Margin="0 0 10 0" Background="{Binding ZoonCanColor}">
+                                                <!--<TextBlock Text="{Binding ZoonCanColor}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Margin="0 0 0 1"/>-->
+                                            </Border>
+
+                                            <!--<TextBlock Text="{Binding ZoonCanColor}" VerticalAlignment="Center"/>-->
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
+                            <DataGridTextColumn
+                                    CanUserResize="False"
+                                Header="توضیحات زونکن"
+                                MinWidth="400"
+                                Width="*"
+                                   Binding="{Binding ZoonCanDescription}"  />
+
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+
+                </Grid>
+
+            </Grid>
+        </Border>
+    </Border>
+</Window>

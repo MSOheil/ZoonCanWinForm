@@ -1,0 +1,61 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RootNamespace>_20Vision_MailRoom_Wpf</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Fonts\**" />
+    <Compile Remove="MVVM\Model\**" />
+    <EmbeddedResource Remove="Fonts\**" />
+    <EmbeddedResource Remove="MVVM\Model\**" />
+    <None Remove="Fonts\**" />
+    <None Remove="MVVM\Model\**" />
+    <Page Remove="Fonts\**" />
+    <Page Remove="MVVM\Model\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Images\back-new.jfif" />
+    <None Remove="Images\download.jfif" />
+    <None Remove="Images\EditZoonCan.jfif" />
+    <None Remove="Images\Grand Entrance.jfif" />
+    <None Remove="Images\key-icon.png" />
+    <None Remove="Images\p1.jpg" />
+    <None Remove="Images\user-icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\back-new.jfif" />
+    <Resource Include="Images\download.jfif" />
+    <Resource Include="Images\EditZoonCan.jfif" />
+    <Resource Include="Images\Grand Entrance.jfif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\key-icon.png" />
+    <Resource Include="Images\p1.jpg" />
+    <Resource Include="Images\user-icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Fonts\" />
+    <Folder Include="MVVM\Model\ZoonCan\" />
+    <Folder Include="MVVM\View\ZoonCan\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.4.0" />
+    <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
+    <PackageReference Include="Mohsen.PersianDateControls" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\20Vision_MailRoom_Wpf_Application\20Vision_MailRoom_Wpf_Application.csproj" />
+  </ItemGroup>
+
+</Project>

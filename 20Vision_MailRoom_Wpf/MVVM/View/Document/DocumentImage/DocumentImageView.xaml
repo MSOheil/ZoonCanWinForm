@@ -1,0 +1,239 @@
+﻿<Window x:Class="_20Vision_MailRoom_Wpf.MVVM.View.Document.DocumentImage.DocumentImageView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_20Vision_MailRoom_Wpf.MVVM.View.Document.DocumentImage"
+          xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        Title="DocumentImageView" Height="700" Loaded="Window_Loaded"  WindowStyle="None" Width="1550"  AllowsTransparency="True" Background="LightSteelBlue" MouseDown="Window_MouseDown" WindowStartupLocation="CenterScreen">
+
+    <StackPanel Margin="0,0,0,0">
+        <Grid>
+            <Grid.RowDefinitions/>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition  Width="25"/>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="5"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="عکس زونکن" 
+                           Foreground="DarkGray"
+                           FontSize="10"
+                           FontFamily="Montserrat"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Margin="10,0,0,0"/>
+                <Button x:Name="btnMinimize"
+                        Background="#28AEEd"
+                        BorderThickness="0"
+                        Content="-"
+                        Foreground="White"
+                        FontSize="16"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Grid.Column="1"
+                        Click="btnMinimize_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#28AEED"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#278BEF"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="18" Height="18"
+                                    CornerRadius="9"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="btnClose"
+                        BorderThickness="0"
+                        Content="X"
+                        Foreground="White"
+                        FontSize="12"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Grid.Column="2"
+                        Click="btnClose_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#DA34AE"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#DA34AE"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="18" Height="18"
+                                    CornerRadius="9"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+        <Button  Width="200" Height="50" Margin="50 0 0 0" Content="افزودن عکس" Click="AddImage">
+
+        </Button>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel>
+                <StackPanel x:Name="ImageOne_Stack">
+                    <Border Background="Wheat"
+                        Margin="100 30 0 0" x:Name="BOne">
+                        <Image  Width="200" Height="140" x:Name="ImageOne" MouseLeftButtonDown="ShowImageOne"/>
+
+                    </Border>
+                    <Button Width="200" Click="EditImage_Onee" x:Name="EditImage_One" Height="40" Margin="100 20 0 0" Content="تغییر عکس">
+
+                    </Button>
+                    <Button Width="200" Height="40" Margin="100 20 0 0" Content="حذف عکس" x:Name="DeleteImageOne" Click="DeleteImage_One">
+
+                    </Button>
+                </StackPanel>
+                <StackPanel x:Name="ImageTwo_Stack">
+                    <Border Background="Wheat"
+                        Margin="100 30 0 0"  x:Name="BTwo">
+                        <Image  Width="200" Height="140"  x:Name="ImageTwo" MouseLeftButtonDown="ShowImageTwo"/>
+                    </Border>
+                    <Button Width="200" Click="EditImage_Two"  x:Name="EditImageTwo" Height="40" Margin="100 20 0 0" Content="تغییر عکس">
+
+                    </Button>
+                    <Button Width="200" Click="DeleteImageTwo" x:Name="DeleteImage_Two" Height="40" Margin="100 20 0 0" Content="حذف عکس">
+
+                    </Button>
+                </StackPanel>
+         
+             
+            </StackPanel>
+            <StackPanel>
+
+                <StackPanel x:Name="ImageFive_Stack">
+                    <Border Background="Wheat"
+                        Margin="100 30 0 0" x:Name="BFive">
+                        <Image  Width="200" Height="140"  x:Name="ImageFive" MouseDown="ShowImageFive"/>
+                    </Border>
+                    <Button Width="200" Click="EditImage_Five"  x:Name="EditImageFive" Height="40" Margin="100 20 0 0" Content="تغییر عکس">
+
+                    </Button>
+                    <Button Width="200" Height="40" Margin="100 20 0 0" Content="حذف عکس" Click="DeleteImageFive">
+
+                    </Button>
+                </StackPanel>
+
+                <StackPanel x:Name="ImageEight_Stack">
+                    <Border Background="Wheat"
+                        Margin="100 30 0 0" x:Name="BEight">
+                        <Image  Width="200" Height="140"  x:Name="ImageEight" MouseLeftButtonDown="ShowImageEight"/>
+                    </Border>
+                    <Button Width="200" Click="EditImage_Eight"  x:Name="EditImageEight" Height="40" Margin="100 20 0 0" Content="تغییر عکس">
+
+                    </Button>
+                    <Button Width="200" Height="40" Margin="100 20 0 0" Content="حذف عکس" Click="DeleteImageEight">
+
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <StackPanel x:Name="ImageThree_Stack">
+                    <Border Background="Wheat"
+                        Margin="100 30 0 0" x:Name="BThree" >
+                        <Image  Width="200" Height="140"  x:Name="ImageThree" MouseLeftButtonDown="ShowImageThree"/>
+                    </Border>
+                    <Button Width="200" Click="EditImage_Three"  x:Name="EditImageThree" Height="40" Margin="100 20 0 0" Content="تغییر عکس">
+
+                    </Button>
+                    <Button Width="200" Height="40" Margin="100 20 0 0" Click="DeleteImageThree" Content="حذف عکس">
+
+                    </Button>
+                </StackPanel>
+                <StackPanel x:Name="ImageFoure_Stack">
+                    <Border Background="Wheat"
+                        Margin="100 30 0 0"  x:Name="BFoure">
+                        <Image  Width="200" Height="140"  x:Name="ImageFoure" MouseLeftButtonDown="ShowImageFoure"/>
+                    </Border>
+                    <Button Width="200" Click="EditImage_Four" x:Name="EditImageFour" Height="40" Margin="100 20 0 0" Content="تغییر عکس">
+
+                    </Button>
+                    <Button Click="DeleteImageFoure" Width="200" Height="40" Margin="100 20 0 0" Content="حذف عکس">
+
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Margin="0 0 0 0">
+                <StackPanel x:Name="ImageSix_Stack">
+                    <Border Background="Wheat"
+                        Margin="100 30 0 0" x:Name="BSix">
+                        <Image  Width="200" Height="140"  x:Name="ImageSix" MouseLeftButtonDown="ShowImageSix"/>
+                    </Border>
+                    <Button Width="200" Click="EditImage_Six"  x:Name="EditImageSix" Height="40" Margin="100 20 0 0" Content="تغییر عکس">
+
+                    </Button>
+                    <Button Width="200" Height="40" Margin="100 20 0 0" Click="DeleteImageSix" Content="حذف عکس">
+
+                    </Button>
+                </StackPanel>
+                <StackPanel x:Name="ImageSeven_Stack">
+                    <Border Background="Wheat"
+                        Margin="100 30 0 0" x:Name="BSeven">
+                        <Image  Width="200" Height="140"  x:Name="ImageSeven" MouseLeftButtonDown="ShowImageSeven"/>
+                    </Border>
+                    <Button Width="200" Click="EditImage_Seven"  x:Name="EditImageSeven" Height="40" Margin="100 20 0 0" Content="تغییر عکس">
+
+                    </Button>
+                    <Button Width="200" Height="40" Margin="100 20 0 0" Click="DeleteImageSeven" Content="حذف عکس">
+
+                    </Button>
+                </StackPanel>
+                
+            </StackPanel>
+            <StackPanel>
+
+                <StackPanel x:Name="ImageNine_Stack">
+                    <Border Background="Wheat"
+                        Margin="100 30 0 0" x:Name="BNine">
+                        <Image  Width="200" Height="140"  x:Name="ImageNine" MouseLeftButtonDown="ShowImageNine"/>
+                    </Border>
+                    <Button Width="200" Click="EditImage_Nine"  x:Name="EditImageNine" Height="40" Margin="100 20 0 0" Content="تغییر عکس">
+
+                    </Button>
+                    <Button Width="200" Height="40" Margin="100 20 0 0" Click="DeleteImageNine" Content="حذف عکس">
+
+                    </Button>
+                </StackPanel>
+                <StackPanel x:Name="ImageTen_Stack">
+                    <Border Background="Wheat"
+                        Margin="100 30 0 0" x:Name="BTen">
+                        <Image  Width="200" Height="140" x:Name="ImageTen" MouseLeftButtonDown="ShowImageTen"/>
+                    </Border>
+                    <Button Width="200"  Click="EditImage_Ten" x:Name="EditImageTen" Height="40" Margin="100 20 0 0" Content="تغییر عکس">
+
+                    </Button>
+                    <Button Width="200" Height="40" Margin="100 20 0 0" Click="DeleteImageTen" Content="حذف عکس">
+
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+      
+        </StackPanel>
+
+    </StackPanel>
+
+</Window>

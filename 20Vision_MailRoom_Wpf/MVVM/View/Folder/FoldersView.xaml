@@ -1,0 +1,206 @@
+﻿<Window x:Class="_20Vision_MailRoom_Wpf.MVVM.View.Folder.FoldersView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_20Vision_MailRoom_Wpf.MVVM.View.Folder"
+        xmlns:viewModel="clr-namespace:_20Vision_MailRoom_Wpf.MVVM.ViewModel.Folder"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        Title="FoldersView" Height="550" Width="800" WindowStyle="None"
+           WindowStartupLocation="CenterScreen"
+        MouseDown="Window_MouseDown"
+        Background="Transparent"
+        AllowsTransparency="True" Loaded="FolderLoaded">
+
+
+    <Window.DataContext>
+        <viewModel:FolderViewModel/>
+    </Window.DataContext>
+    <Border CornerRadius="30">
+        <Border.Background>
+            <ImageBrush ImageSource="/Images/EditZoonCan.jfif"
+                        Stretch="None"/>
+        </Border.Background>
+        <Border CornerRadius="10"
+            BorderThickness="1"
+            Opacity="0.85">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#bdc3c7" Offset="0"/>
+                    <GradientStop Color="#bdc3c7" Offset="0.75"/>
+                    <GradientStop Color="#2c3e50" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop  Color="#bdc3c7"/>
+                    <GradientStop Color="#2c3e50"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition  Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="لیست فولدر ها" 
+                           Foreground="DarkGray"
+                           FontSize="10"
+                           FontFamily="Montserrat"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Margin="10,0,0,0"/>
+                    <Button x:Name="btnMinimize"
+                        Background="#28AEEd"
+                        BorderThickness="0"
+                        Content="-"
+                        Foreground="White"
+                        FontSize="16"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Grid.Column="1"
+                        Click="btnMinimize_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#28AEED"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#278BEF"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18"
+                                    CornerRadius="9"
+                                    Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button x:Name="btnClose"
+                        BorderThickness="0"
+                        Content="X"
+                        Foreground="White"
+                        FontSize="12"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Grid.Column="2"
+                        Click="btnClose_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#DA34AE"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#DA34AE"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18"
+                                    CornerRadius="9"
+                                    Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <StackPanel Orientation="Horizontal">
+
+                        <Button Style="{StaticResource addButton}"
+                                Margin="30 0 0  0" Click="AddFolder_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
+                                <TextBlock Text="افزودن فولدر"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource addButton}" Click="EditFolder_Click"
+                                Margin="30 0 0  0">
+                            <StackPanel Orientation="Horizontal">
+                                <Icon:PackIconMaterial Kind="BookEdit" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
+                                <TextBlock Text="ویرایش فولدر"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Style="{StaticResource addButton}" Click="DeleteFolder_Click"
+                                Margin="30 0 0  0">
+                            <StackPanel Orientation="Horizontal">
+                                <Icon:PackIconMaterial Kind="Delete" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
+                                <TextBlock Text="حذف فولدر"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource addButton}" Click="ShowDocument_Btn_Click"
+                                Margin="30 0 0  0">
+                            <StackPanel Orientation="Horizontal">
+                                <Icon:PackIconMaterial Kind="FileDocument" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
+                                <TextBlock Text="نمایش سند های فولدر"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+                <DataGrid Grid.Row="2" Grid.Column="1" 
+                                  x:Name="FDG_View" IsReadOnly="True"
+                                  ItemsSource="{Binding FolderViewModel}"
+                              AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                                Visibility="Hidden"
+                                Header="FolderId"
+                                CanUserResize="False"
+                                Width="*"  
+                                Binding="{Binding FolderId}"/>
+                        <DataGridTextColumn
+                                Visibility="Hidden"
+                                Header="ZoonCanId"
+                                CanUserResize="False"
+                                Width="*" 
+                                Binding="{Binding ZoonCanId}"/>
+                        <DataGridTextColumn
+                                Header="کد فولدر"
+                                MinWidth="40"
+                                CanUserResize="False"
+                                Width="40" 
+                                Binding="{Binding GeneratedCodeForFolder}"/>
+                        <DataGridTextColumn
+                                Header="نام فولدر"
+                                MinWidth="150"
+                                CanUserResize="False"
+                                Width="150" 
+                                Binding="{Binding FolderName}"/>
+                        <DataGridTextColumn
+                                Header="تاریخ درج فولدر"
+                                CanUserResize="False"
+                                MinWidth="86"
+                                Width="86" 
+                                  Binding="{Binding InsertDate}" />
+                        <DataGridTextColumn
+                                CanUserResize="False"
+                                Header="توضیحات فولدر"
+                                MinWidth="500"
+                                Width="*" 
+                                Binding="{Binding FolderDescription}" />
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </Grid>
+        </Border>
+    </Border>
+</Window>
